@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    perspective: 300rem;
+    
+}
+main{
+    background-color: bisque;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main div{
+    font-size: 2rem;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: deeppink;
+    border-radius: 0.5rem;
+    transform: rotateX(60deg)rotateZ(45deg);
+    transform-style: preserve-3d;
+    perspective: 300rem;
+    text-shadow: 
+        0.025rem 0rem 0 dimgrey,
+        0.025rem 0.05rem 0 black,
+        0.05rem 0.025rem 0 dimgrey,
+        0.05rem 0.1rem 0 black,
+        0.1rem 0.05rem 0 dimgrey,
+        0.1rem 0.15rem 0 black,
+        0.15rem 0.1rem 0 dimgrey,
+        0.15rem 0.2rem 0 black,
+        0.2rem 0.15rem 0 dimgrey, 
+        0.2rem 0.25rem 0 black, 
+        0.25rem 0.2rem 0 dimgrey, 
+        0.25rem 0.3rem 0 black,
+        0.3rem 0.25rem 0 dimgrey,
+        0.3rem 0.35rem 0 black,
+        0.35rem 0.3rem 0 dimgrey,
+        0.35rem 0.4rem 0 black,
+        0.4rem 0.35rem 0 dimgrey,
+        0.4rem 0.45rem 0 black,
+        0.45rem 0.4rem 0 dimgrey,
+        0.45rem 0.5rem 0 black,
+        0.5rem 0.45rem 0 dimgrey, 
+        0.5rem 0.55rem 0 black, 
+        0.55rem 0.5rem 0 dimgrey, 
+        0.55rem 0.6rem 0 black;
+    box-shadow: 
+    0.025rem 0rem 0 dimgrey,
+    0.025rem 0.05rem 0 black,
+    0.05rem 0.025rem 0 dimgrey,
+    0.05rem 0.1rem 0 black,
+    0.1rem 0.05rem 0 dimgrey,
+    0.1rem 0.15rem 0 black,
+    0.15rem 0.1rem 0 dimgrey,
+    0.15rem 0.2rem 0 black,
+    0.2rem 0.15rem 0 dimgrey, 
+    0.2rem 0.25rem 0 black, 
+    0.25rem 0.2rem 0 dimgrey, 
+    0.25rem 0.3rem 0 black,
+    0.3rem 0.25rem 0 dimgrey,
+    0.3rem 0.35rem 0 black,
+    0.35rem 0.3rem 0 dimgrey,
+    0.35rem 0.4rem 0 black,
+    0.4rem 0.35rem 0 dimgrey,
+    0.4rem 0.45rem 0 black,
+    0.45rem 0.4rem 0 dimgrey,
+    0.45rem 0.5rem 0 black,
+    0.5rem 0.45rem 0 dimgrey, 
+    0.5rem 0.55rem 0 black, 
+    0.55rem 0.5rem 0 dimgrey, 
+    0.55rem 0.6rem 0 black;
+        transition: 0.5 ease-in-out;
+}
+
+main div:hover{
+    transform: rotateX(60deg)rotateZ(45deg)translateZ(-0.25rem);
+    transform-style: preserve-3d;
+}
