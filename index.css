@@ -22,8 +22,8 @@ main{
 }
 
 .container{
-    width: 16rem;
-    height: 16rem;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ main{
     transform-style: preserve-3d;
 }
 .calculator_key{
-    margin: 0.125rem;
+    margin: 0.5rem;
     font-size: 1.5rem;
     width: 4rem;
     height: 4rem;
@@ -109,7 +109,31 @@ main{
     0.5rem 0.45rem 0.025rem dimgrey, 
     0.5rem 0.55rem 0.025rem black, 
     0.55rem 0.5rem 0.025rem dimgrey, 
-    0.55rem 0.6rem 0.025rem black;
+    0.55rem 0.6rem 0.025rem black,
+    0.6rem 0.55rem 0.025rem dimgrey,
+    0.6rem 0.65rem 0.025rem black,
+    0.65rem 0.6rem 0.025rem dimgrey,
+    0.65rem 0.7rem 0.025rem black,
+    0.7rem 0.65rem 0.025rem dimgrey,
+    0.7rem 0.75rem 0.025rem black,
+    0.75rem 0.7rem 0.025rem dimgrey,
+    0.75rem 0.8rem 0.025rem black,
+    0.8rem 0.75rem 0.025rem dimgrey, 
+    0.8rem 0.85rem 0.025rem black, 
+    0.85rem 0.8rem 0.025rem dimgrey, 
+    0.85rem 0.9rem 0.025rem black,
+    0.9rem 0.85rem 0.025rem dimgrey,
+    0.9rem 0.95rem 0.025rem black,
+    0.95rem 0.9rem 0.025rem dimgrey,
+    0.95rem 1rem 0.025rem black,
+    1rem 0.95rem 0.025rem dimgrey,
+    1rem 1.05rem 0.025rem black,
+    1.05rem 1rem 0.025rem dimgrey,
+    1.05rem 1.1rem 0.025rem black,
+    1.1rem 1.05rem 0.025rem dimgrey, 
+    1.1rem 1.15rem 0.025rem black, 
+    1.15rem 1.1rem 0.025rem dimgrey, 
+    1.15rem 1.2rem 0.025rem black;
     /*transition: 0.5 ease-in-out;*/
 }
 
@@ -185,24 +209,81 @@ main .calculator_key:hover{
         0.25rem 0.2rem 0.025rem dimgrey, 
         0.25rem 0.3rem 0.025rem black;
     /*FIN TEST*/
+    box-shadow: 
+    0.025rem 0rem 0.025rem dimgrey,
+    0.025rem 0.05rem 0.025rem black,
+    0.05rem 0.025rem 0.025rem dimgrey,
+    0.05rem 0.1rem 0.025rem black,
+    0.1rem 0.05rem 0.025rem dimgrey,
+    0.1rem 0.15rem 0.025rem black,
+    0.15rem 0.1rem 0.025rem dimgrey,
+    0.15rem 0.2rem 0.025rem black,
+    0.2rem 0.15rem 0.025rem dimgrey, 
+    0.2rem 0.25rem 0.025rem black, 
+    0.25rem 0.2rem 0.025rem dimgrey, 
+    0.25rem 0.3rem 0.025rem black,
+    0.3rem 0.25rem 0.025rem dimgrey,
+    0.3rem 0.35rem 0.025rem black,
+    0.35rem 0.3rem 0.025rem dimgrey,
+    0.35rem 0.4rem 0.025rem black,
+    0.4rem 0.35rem 0.025rem dimgrey,
+    0.4rem 0.45rem 0.025rem black,
+    0.45rem 0.4rem 0.025rem dimgrey,
+    0.45rem 0.5rem 0.025rem black,
+    0.5rem 0.45rem 0.025rem dimgrey, 
+    0.5rem 0.55rem 0.025rem black, 
+    0.55rem 0.5rem 0.025rem dimgrey, 
+    0.55rem 0.6rem 0.025rem black,
+    0.6rem 0.55rem 0.025rem dimgrey,
+    0.6rem 0.65rem 0.025rem black,
+    0.65rem 0.6rem 0.025rem dimgrey,
+    0.65rem 0.7rem 0.025rem black,
+    0.7rem 0.65rem 0.025rem dimgrey,
+    0.7rem 0.75rem 0.025rem black,
+    0.75rem 0.7rem 0.025rem dimgrey,
+    0.75rem 0.8rem 0.025rem black,
+    0.8rem 0.75rem 0.025rem dimgrey, 
+    0.8rem 0.85rem 0.025rem black, 
+    0.85rem 0.8rem 0.025rem dimgrey, 
+    0.85rem 0.9rem 0.025rem black,
+    0.9rem 0.85rem 0.025rem dimgrey,
+    0.9rem 0.95rem 0.025rem black,
+    0.95rem 0.9rem 0.025rem dimgrey,
+    0.95rem 1rem 0.025rem black,
+    1rem 0.95rem 0.025rem dimgrey,
+    1rem 1.05rem 0.025rem black,
+    1.05rem 1rem 0.025rem dimgrey,
+    1.05rem 1.1rem 0.025rem black,
+    1.1rem 1.05rem 0.025rem dimgrey, 
+    1.1rem 1.15rem 0.025rem black, 
+    1.15rem 1.1rem 0.025rem dimgrey, 
+    1.15rem 1.2rem 0.025rem black;
 }
 
 .right{
     background-color:burlywood;
+    width: 50%;
     transform: 
         translateY(-6rem)
-        translateX(3rem)
+        translateX(4.5rem)
         rotateY(90deg)
-        translateX(3rem);
+        translateX(1.5rem);
 }
 
 .front{
     background-color: darkgray;
+    height: 50%;
+    transform: 
+        translateY(-7.5rem)
+        rotateX(90deg)
+        translateY(-1.5rem);
+    /*
     transform: 
         translateY(-6rem)
         rotateX(90deg)
         translateZ(3rem)
         translateY(-3rem);
+        */
 }
 
 .cube_touch_zone:hover > .cube{
