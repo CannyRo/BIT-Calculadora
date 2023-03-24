@@ -1,18 +1,24 @@
+@font-face {
+    font-family: "Digi";
+    src: url("./DS-DIGII.TTF");
+}
 *{
     box-sizing: border-box;
 }
 body{
-    background-color: azure;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 100vh;
+    font-size: 1rem;
     perspective: 300rem;
+    background-color: aliceblue;
+    color: aliceblue;
+    overflow: hidden;
     
 }
 main{
-    background-color: bisque;
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,272 +26,268 @@ main{
     justify-content: center;
     align-items: center;
 }
-
-.container{
-    width: 20rem;
-    height: 20rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0.0125rem solid gray;
+.screenbox{
+    box-sizing: content-box;
+    position: relative;
+    width: 19rem;
+    height: 6rem;
+    background-color: #00131c;
+    border: 0.0125rem solid #00131c;
+    border-radius: 0.25rem;
+    transform:
+        rotateX(60deg)
+        rotateZ(45deg)
+        rotateX(-90deg)
+        translateX(19rem)
+        translateZ(6rem);
+    transform-style: preserve-3d;
+}
+.screenbox input{
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+    width:18.25rem;
+    height: 4.5rem;
+    font-family: "Digi", Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: end;
+}
+#screenbox_side{
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 7rem;
+    background-color:#1F4E66;
+    transform: 
+        translateX(18.5rem)
+        rotateY(90deg)
+        translateX(0.5rem);
+    border: 0.0125rem solid #1F4E66;
+    border-radius: 0.125rem;
+}
+#screenbox_roof{
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 19rem;
+    height: 1rem;
+    background-color: #0077B3;
+    transform: 
+        translateY(-0.5rem)
+        rotateX(90deg)
+        translateY(-0.5rem);
+    border-radius: 0.125rem;
+    border: 0.0125rem solid #1F4E66;
+}
+.keyboard{
+    width: 19rem;
+    height: 26rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-areas: 
+        "divide multiply clear back"
+        "seven eight nine less"
+        "four five six more"
+        "one two three equal"
+        "zero zero dot equal";
+    border: 0.0125rem solid #0077B3;
     border-radius: 0.125rem;
     transform: rotateX(60deg)rotateZ(45deg);
     transform-style: preserve-3d;
+    background-color: #0077B3;
+    box-shadow: 
+        0.025rem 0rem 0.025rem #1F4E66,
+        0.025rem 0.05rem 0.025rem #00131c,
+        0.05rem 0.025rem 0.025rem #1F4E66,
+        0.05rem 0.1rem 0.025rem #00131c,
+        0.1rem 0.05rem 0.025rem #1F4E66,
+        0.1rem 0.15rem 0.025rem #00131c,
+        0.15rem 0.1rem 0.025rem #1F4E66,
+        0.15rem 0.2rem 0.025rem #00131c,
+        0.2rem 0.15rem 0.025rem #1F4E66, 
+        0.2rem 0.25rem 0.025rem #00131c, 
+        0.25rem 0.2rem 0.025rem #1F4E66, 
+        0.25rem 0.3rem 0.025rem #00131c,
+        0.3rem 0.25rem 0.025rem #1F4E66,
+        0.3rem 0.35rem 0.025rem #00131c,
+        0.35rem 0.3rem 0.025rem #1F4E66,
+        0.35rem 0.4rem 0.025rem #00131c,
+        0.4rem 0.35rem 0.025rem #1F4E66,
+        0.4rem 0.45rem 0.025rem #00131c,
+        0.45rem 0.4rem 0.025rem #1F4E66,
+        0.45rem 0.5rem 0.025rem #00131c,
+        0.5rem 0.45rem 0.025rem #1F4E66, 
+        0.5rem 0.55rem 0.025rem #00131c, 
+        0.55rem 0.5rem 0.025rem #1F4E66, 
+        0.55rem 0.6rem 0.025rem #00131c,
+        0.6rem 0.55rem 0.025rem #1F4E66,
+        0.6rem 0.65rem 0.025rem #00131c,
+        0.65rem 0.6rem 0.025rem #1F4E66,
+        0.65rem 0.7rem 0.025rem #00131c,
+        0.7rem 0.65rem 0.025rem #1F4E66,
+        0.7rem 0.75rem 0.025rem #00131c,
+        0.75rem 0.7rem 0.025rem #1F4E66,
+        0.75rem 0.8rem 0.025rem #00131c,
+        0.8rem 0.75rem 0.025rem #1F4E66, 
+        0.8rem 0.85rem 0.025rem #00131c, 
+        0.85rem 0.8rem 0.025rem #1F4E66, 
+        0.85rem 0.9rem 0.025rem #00131c,
+        0.9rem 0.85rem 0.025rem #1F4E66,
+        0.9rem 0.95rem 0.025rem #00131c,
+        0.95rem 0.9rem 0.025rem #1F4E66,
+        0.95rem 1rem 0.025rem #00131c,
+        1rem 0.95rem 0.025rem #1F4E66,
+        1rem 1.05rem 0.025rem #00131c,
+        1.05rem 1rem 0.025rem #1F4E66,
+        1.05rem 1.1rem 0.025rem #00131c,
+        1.1rem 1.05rem 0.025rem #1F4E66, 
+        1.1rem 1.15rem 0.025rem #00131c, 
+        1.15rem 1.1rem 0.025rem #1F4E66, 
+        1.15rem 1.2rem 0.025rem #00131c;
 }
 .calculator_key{
-    margin: 0.5rem;
-    font-size: 1.5rem;
-    width: 4rem;
-    height: 4rem;
+    z-index: 1;
+    width: 3.5rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: deeppink;
+    background-color: #032333;
+
     border-radius: 0.5rem;
-    /*transform: rotateX(60deg)rotateZ(45deg);*/
+    transform: translateZ(0.5rem);
     transform-style: preserve-3d;
     perspective: 300rem;
-    /*
     text-shadow: 
-        0.025rem 0rem 0 dimgrey,
-        0.025rem 0.05rem 0 black,
-        0.05rem 0.025rem 0 dimgrey,
-        0.05rem 0.1rem 0 black,
-        0.1rem 0.05rem 0 dimgrey,
-        0.1rem 0.15rem 0 black,
-        0.15rem 0.1rem 0 dimgrey,
-        0.15rem 0.2rem 0 black,
-        0.2rem 0.15rem 0 dimgrey, 
-        0.2rem 0.25rem 0 black, 
-        0.25rem 0.2rem 0 dimgrey, 
-        0.25rem 0.3rem 0 black,
-        0.3rem 0.25rem 0 dimgrey,
-        0.3rem 0.35rem 0 black,
-        0.35rem 0.3rem 0 dimgrey,
-        0.35rem 0.4rem 0 black,
-        0.4rem 0.35rem 0 dimgrey,
-        0.4rem 0.45rem 0 black,
-        0.45rem 0.4rem 0 dimgrey,
-        0.45rem 0.5rem 0 black,
-        0.5rem 0.45rem 0 dimgrey, 
-        0.5rem 0.55rem 0 black, 
-        0.55rem 0.5rem 0 dimgrey, 
-        0.55rem 0.6rem 0 black;
-        */
-    text-shadow: 
-        0.025rem 0rem 0.025rem dimgrey,
-        0.025rem 0.05rem 0.025rem black,
-        0.05rem 0.025rem 0.025rem dimgrey,
-        0.05rem 0.1rem 0.025rem black,
-        0.1rem 0.05rem 0.025rem dimgrey,
-        0.1rem 0.15rem 0.025rem black,
-        0.15rem 0.1rem 0.025rem dimgrey,
-        0.15rem 0.2rem 0.025rem black,
-        0.2rem 0.15rem 0.025rem dimgrey, 
-        0.2rem 0.25rem 0.025rem black, 
-        0.25rem 0.2rem 0.025rem dimgrey, 
-        0.25rem 0.3rem 0.025rem black;
+        0.025rem 0rem 0.025rem #1F4E66,
+        0.025rem 0.05rem 0.025rem #00131c,
+        0.05rem 0.025rem 0.025rem #1F4E66,
+        0.05rem 0.1rem 0.025rem #00131c,
+        0.1rem 0.05rem 0.025rem #1F4E66,
+        0.1rem 0.15rem 0.025rem #00131c,
+        0.15rem 0.1rem 0.025rem #1F4E66,
+        0.15rem 0.2rem 0.025rem #00131c,
+        0.2rem 0.15rem 0.025rem #1F4E66, 
+        0.2rem 0.25rem 0.025rem #00131c, 
+        0.25rem 0.2rem 0.025rem #1F4E66, 
+        0.25rem 0.3rem 0.025rem #00131c;
     box-shadow: 
-    0.025rem 0rem 0.025rem dimgrey,
-    0.025rem 0.05rem 0.025rem black,
-    0.05rem 0.025rem 0.025rem dimgrey,
-    0.05rem 0.1rem 0.025rem black,
-    0.1rem 0.05rem 0.025rem dimgrey,
-    0.1rem 0.15rem 0.025rem black,
-    0.15rem 0.1rem 0.025rem dimgrey,
-    0.15rem 0.2rem 0.025rem black,
-    0.2rem 0.15rem 0.025rem dimgrey, 
-    0.2rem 0.25rem 0.025rem black, 
-    0.25rem 0.2rem 0.025rem dimgrey, 
-    0.25rem 0.3rem 0.025rem black,
-    0.3rem 0.25rem 0.025rem dimgrey,
-    0.3rem 0.35rem 0.025rem black,
-    0.35rem 0.3rem 0.025rem dimgrey,
-    0.35rem 0.4rem 0.025rem black,
-    0.4rem 0.35rem 0.025rem dimgrey,
-    0.4rem 0.45rem 0.025rem black,
-    0.45rem 0.4rem 0.025rem dimgrey,
-    0.45rem 0.5rem 0.025rem black,
-    0.5rem 0.45rem 0.025rem dimgrey, 
-    0.5rem 0.55rem 0.025rem black, 
-    0.55rem 0.5rem 0.025rem dimgrey, 
-    0.55rem 0.6rem 0.025rem black,
-    0.6rem 0.55rem 0.025rem dimgrey,
-    0.6rem 0.65rem 0.025rem black,
-    0.65rem 0.6rem 0.025rem dimgrey,
-    0.65rem 0.7rem 0.025rem black,
-    0.7rem 0.65rem 0.025rem dimgrey,
-    0.7rem 0.75rem 0.025rem black,
-    0.75rem 0.7rem 0.025rem dimgrey,
-    0.75rem 0.8rem 0.025rem black,
-    0.8rem 0.75rem 0.025rem dimgrey, 
-    0.8rem 0.85rem 0.025rem black, 
-    0.85rem 0.8rem 0.025rem dimgrey, 
-    0.85rem 0.9rem 0.025rem black,
-    0.9rem 0.85rem 0.025rem dimgrey,
-    0.9rem 0.95rem 0.025rem black,
-    0.95rem 0.9rem 0.025rem dimgrey,
-    0.95rem 1rem 0.025rem black,
-    1rem 0.95rem 0.025rem dimgrey,
-    1rem 1.05rem 0.025rem black,
-    1.05rem 1rem 0.025rem dimgrey,
-    1.05rem 1.1rem 0.025rem black,
-    1.1rem 1.05rem 0.025rem dimgrey, 
-    1.1rem 1.15rem 0.025rem black, 
-    1.15rem 1.1rem 0.025rem dimgrey, 
-    1.15rem 1.2rem 0.025rem black;
+    0.025rem 0rem 0.025rem #1F4E66,
+    0.025rem 0.05rem 0.025rem #00131c,
+    0.05rem 0.025rem 0.025rem #1F4E66,
+    0.05rem 0.1rem 0.025rem #00131c,
+    0.1rem 0.05rem 0.025rem #1F4E66,
+    0.1rem 0.15rem 0.025rem #00131c,
+    0.15rem 0.1rem 0.025rem #1F4E66,
+    0.15rem 0.2rem 0.025rem #00131c,
+    0.2rem 0.15rem 0.025rem #1F4E66, 
+    0.2rem 0.25rem 0.025rem #00131c, 
+    0.25rem 0.2rem 0.025rem #1F4E66, 
+    0.25rem 0.3rem 0.025rem #00131c,
+    0.3rem 0.25rem 0.025rem #1F4E66,
+    0.3rem 0.35rem 0.025rem #00131c,
+    0.35rem 0.3rem 0.025rem #1F4E66,
+    0.35rem 0.4rem 0.025rem #00131c,
+    0.4rem 0.35rem 0.025rem #1F4E66,
+    0.4rem 0.45rem 0.025rem #00131c,
+    0.45rem 0.4rem 0.025rem #1F4E66,
+    0.45rem 0.5rem 0.025rem #00131c,
+    0.5rem 0.45rem 0.025rem #1F4E66, 
+    0.5rem 0.55rem 0.025rem #00131c, 
+    0.55rem 0.5rem 0.025rem #1F4E66, 
+    0.55rem 0.6rem 0.025rem #00131c,
+    0.6rem 0.55rem 0.025rem #1F4E66,
+    0.6rem 0.65rem 0.025rem #00131c,
+    0.65rem 0.6rem 0.025rem #1F4E66,
+    0.65rem 0.7rem 0.025rem #00131c,
+    0.7rem 0.65rem 0.025rem #1F4E66,
+    0.7rem 0.75rem 0.025rem #00131c,
+    0.75rem 0.7rem 0.025rem #1F4E66,
+    0.75rem 0.8rem 0.025rem #00131c,
+    0.8rem 0.75rem 0.025rem #1F4E66, 
+    0.8rem 0.85rem 0.025rem #00131c, 
+    0.85rem 0.8rem 0.025rem #1F4E66, 
+    0.85rem 0.9rem 0.025rem #00131c,
+    0.9rem 0.85rem 0.025rem #1F4E66,
+    0.9rem 0.95rem 0.025rem #00131c,
+    0.95rem 0.9rem 0.025rem #1F4E66,
+    0.95rem 1rem 0.025rem #00131c,
+    1rem 0.95rem 0.025rem #1F4E66,
+    1rem 1.05rem 0.025rem #00131c,
+    1.05rem 1rem 0.025rem #1F4E66,
+    1.05rem 1.1rem 0.025rem #00131c,
+    1.1rem 1.05rem 0.025rem #1F4E66, 
+    1.1rem 1.15rem 0.025rem #00131c, 
+    1.15rem 1.1rem 0.025rem #1F4E66, 
+    1.15rem 1.2rem 0.025rem #00131c;
     /*transition: 0.5 ease-in-out;*/
 }
 
+#zero{
+    grid-area: zero;
+    width: 8.25rem;
+}
+#one{
+    grid-area: one;
+}
+#two{
+    grid-area: two;
+}
+#three{
+    grid-area: three;
+}
+#four{
+    grid-area: four;
+}
+#five{
+    grid-area: five;
+}
+#six{
+    grid-area: six;
+}
+#seven{
+    grid-area: seven;
+}
+#eight{
+    grid-area: eight;
+}
+#nine{
+    grid-area: nine;
+}
+#dot{
+    grid-area: dot;
+}
+#more{
+    grid-area: more;
+}
+#less{
+    grid-area: less;
+}
+#multiply{
+    grid-area: multiply;
+}
+#divide{
+    grid-area: divide;
+}
+#equal{
+    grid-area: equal;
+    height: 8.5rem;
+}
+#back{
+    grid-area: back;
+    font-size: 0.5rem;
+}
+#clear{
+    grid-area: clear;
+    font-size: 0.5rem;
+}
+
 main .calculator_key:hover{
-    /*transform: rotateX(60deg)rotateZ(45deg)translateZ(-0.25rem);*/
-    transform: translateZ(-0.25rem);
+    transform: translateZ(0.1rem);
     transform-style: preserve-3d;
-}
-
-.other_container{
-    background-color: aquamarine;
-    width: 100%;
-    height: 25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.box{
-    width: 75%;
-    height: 75%;
-    border: 0.0125rem solid gray;
-    border-radius: 0.125rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-}
-
-.cube_touch_zone{
-    /*background-color: blue;*/
-    transform-style: preserve-3d;
-    transform: rotateX(60deg)rotateZ(45deg)
-}
-.cube{
-    width: 6rem;
-    height: 6rem;
-    position: relative;
-    background-color: chartreuse;
-    transform-style: preserve-3d;
-    /*transform: rotateX(60deg)rotateZ(45deg)*/
-}
-
-.side{
-    width: 100%;
-    height: 100%;
-    border-radius: 0.5rem;
-    transform-style: preserve-3d;
-    transition: 0.2s ease-in-out;
-    
-}
-
-.top{
-    background-color: azure;
-    transform-style: preserve-3d;
-    /*TEST*/
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    perspective: 300rem;
-    text-shadow: 
-        0.025rem 0rem 0.025rem dimgrey,
-        0.025rem 0.05rem 0.025rem black,
-        0.05rem 0.025rem 0.025rem dimgrey,
-        0.05rem 0.1rem 0.025rem black,
-        0.1rem 0.05rem 0.025rem dimgrey,
-        0.1rem 0.15rem 0.025rem black,
-        0.15rem 0.1rem 0.025rem dimgrey,
-        0.15rem 0.2rem 0.025rem black,
-        0.2rem 0.15rem 0.025rem dimgrey, 
-        0.2rem 0.25rem 0.025rem black, 
-        0.25rem 0.2rem 0.025rem dimgrey, 
-        0.25rem 0.3rem 0.025rem black;
-    /*FIN TEST*/
-    box-shadow: 
-    0.025rem 0rem 0.025rem dimgrey,
-    0.025rem 0.05rem 0.025rem black,
-    0.05rem 0.025rem 0.025rem dimgrey,
-    0.05rem 0.1rem 0.025rem black,
-    0.1rem 0.05rem 0.025rem dimgrey,
-    0.1rem 0.15rem 0.025rem black,
-    0.15rem 0.1rem 0.025rem dimgrey,
-    0.15rem 0.2rem 0.025rem black,
-    0.2rem 0.15rem 0.025rem dimgrey, 
-    0.2rem 0.25rem 0.025rem black, 
-    0.25rem 0.2rem 0.025rem dimgrey, 
-    0.25rem 0.3rem 0.025rem black,
-    0.3rem 0.25rem 0.025rem dimgrey,
-    0.3rem 0.35rem 0.025rem black,
-    0.35rem 0.3rem 0.025rem dimgrey,
-    0.35rem 0.4rem 0.025rem black,
-    0.4rem 0.35rem 0.025rem dimgrey,
-    0.4rem 0.45rem 0.025rem black,
-    0.45rem 0.4rem 0.025rem dimgrey,
-    0.45rem 0.5rem 0.025rem black,
-    0.5rem 0.45rem 0.025rem dimgrey, 
-    0.5rem 0.55rem 0.025rem black, 
-    0.55rem 0.5rem 0.025rem dimgrey, 
-    0.55rem 0.6rem 0.025rem black,
-    0.6rem 0.55rem 0.025rem dimgrey,
-    0.6rem 0.65rem 0.025rem black,
-    0.65rem 0.6rem 0.025rem dimgrey,
-    0.65rem 0.7rem 0.025rem black,
-    0.7rem 0.65rem 0.025rem dimgrey,
-    0.7rem 0.75rem 0.025rem black,
-    0.75rem 0.7rem 0.025rem dimgrey,
-    0.75rem 0.8rem 0.025rem black,
-    0.8rem 0.75rem 0.025rem dimgrey, 
-    0.8rem 0.85rem 0.025rem black, 
-    0.85rem 0.8rem 0.025rem dimgrey, 
-    0.85rem 0.9rem 0.025rem black,
-    0.9rem 0.85rem 0.025rem dimgrey,
-    0.9rem 0.95rem 0.025rem black,
-    0.95rem 0.9rem 0.025rem dimgrey,
-    0.95rem 1rem 0.025rem black,
-    1rem 0.95rem 0.025rem dimgrey,
-    1rem 1.05rem 0.025rem black,
-    1.05rem 1rem 0.025rem dimgrey,
-    1.05rem 1.1rem 0.025rem black,
-    1.1rem 1.05rem 0.025rem dimgrey, 
-    1.1rem 1.15rem 0.025rem black, 
-    1.15rem 1.1rem 0.025rem dimgrey, 
-    1.15rem 1.2rem 0.025rem black;
-}
-
-.right{
-    background-color:burlywood;
-    width: 50%;
-    transform: 
-        translateY(-6rem)
-        translateX(4.5rem)
-        rotateY(90deg)
-        translateX(1.5rem);
-}
-
-.front{
-    background-color: darkgray;
-    height: 50%;
-    transform: 
-        translateY(-7.5rem)
-        rotateX(90deg)
-        translateY(-1.5rem);
-    /*
-    transform: 
-        translateY(-6rem)
-        rotateX(90deg)
-        translateZ(3rem)
-        translateY(-3rem);
-        */
-}
-
-.cube_touch_zone:hover > .cube{
-    transform: translateZ(-1rem);
 }
