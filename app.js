@@ -84,7 +84,7 @@ const app = {
 
     // ECOUTEURS DE LA SAISIE CLAVIER REEL
     listen_real_keyboard : function(){
-        console.log('RUN => listen_real_keyboard');
+        //console.log('RUN => listen_real_keyboard');
         app.screen.onkeypress = (e) => {
             // console.log("Event");
             // console.log(e);
@@ -112,7 +112,7 @@ const app = {
 
     // ECOUTEURS DE LA SAISIE CLAVIER NUMERIQUE
     listen_virtual_keyboard : function(){
-        console.log('RUN => listen_virtual_keyboard');
+        //console.log('RUN => listen_virtual_keyboard');
         //
         app.zero.addEventListener("click", (e)=>{ app.click_on_virtual_keyboard(e)} );
         app.one.addEventListener("click", (e)=>{ app.click_on_virtual_keyboard(e)} );
@@ -170,8 +170,8 @@ const app = {
         // if(x.classList.contains("unpresseffect")){
         //     x.classList.remove("unpresseffect");
         // };
-        console.log("ON VA PRESSER LE BOUTON");
-        console.log(x);
+        //console.log("ON VA PRESSER LE BOUTON");
+        //console.log(x);
         x.animate([
             { transform: 'translateZ(0.5rem)'},
             { transform: 'translateZ(0.125rem)', easing: "ease-in-out"},
@@ -186,17 +186,47 @@ const app = {
 
     // SEQUENCE DE CLICK SUR LE CLAVIER VIRTUEL
     click_here : function(x){
-        console.log(x);
-        console.log(typeof(x));
+        //console.log(x);
+        //console.log(typeof(x));
         app.update_value_on_the_screen(x);
     },
 
     update_value_on_the_screen : function(x){
         if(app.screen.value){
-            app.screen.value +=x;
+            console.log("APP.SCREEN.VALUE => ",  app.screen.value);
+            if(x == "Clear"){
+                //local_value = "";
+                // console.log("LOCAL VALUE ==============> ");
+                // console.log(local_value);
+                // console.log("=======================")
+                app.screen.setAttribute("value", "");
+                app.screen.value = "";
+                return;
+            }
+            if(x == "Back"){
+                console.log("BACK")
+                let new_value = app.screen.value.substring(0, app.screen.value.length-1);
+                // console.log("LOCAL VALUE ==============> ");
+                // console.log(local_value);
+                // console.log("=======================")
+                app.screen.setAttribute("value", new_value);
+                app.screen.value = new_value;
+                return;
+            }
+            let tempo_value = app.screen.value + x;
+            app.screen.setAttribute("value", tempo_value);
+            app.screen.value = tempo_value;
         } else {
-            console.log(app.screen);
+            if(x == "Clear"){
+                return;
+            }
+            if(x == "Back"){
+                return;
+            }
+            console.log("APP.SCREEN => ", app.screen);
+            console.log("APP.SCREEN.VALUE => ",  app.screen.value);
             app.screen.setAttribute("value", x);
+            app.screen.value=x;
             // let new_attribute = document.createAttribute("value");
             // new_attribute.value = x;
             // app.screen.setAttributeNode(new_attribute.value);
