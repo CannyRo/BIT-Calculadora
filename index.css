@@ -348,6 +348,7 @@ main{
 }
 
 button{
+    display: none;
     position: fixed;
     left: 3rem;
     top: 3rem;

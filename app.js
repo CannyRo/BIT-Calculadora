@@ -37,7 +37,78 @@ const app = {
         app.real_keyboard();
 
         // ON ECOUTE LE CLAVIER VIRTUEL ET ON AGIT
-        app.virtual_keyboard();
+        app.zero.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("0");
+        } );
+        app.one.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("1");
+        } );
+        app.two.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("2");
+        } );
+        app.three.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("3");
+        } );
+        app.four.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("4");
+        } );
+        app.five.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("5");
+        } );
+        app.six.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("6");
+        } );
+        app.seven.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("7");
+        } );
+        app.eight.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("8");
+        } );
+        app.nine.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("9");
+        } );
+        app.dot.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard(".");
+        } );
+        app.more.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("+");
+        } );
+        app.less.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("-");
+        } );
+        app.multiply.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("*");
+        } );
+        app.divide.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("/");
+        } );
+        app.equal.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("=");
+        } );
+        app.back.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("Back");
+        } );
+        app.clear.addEventListener("click", (e)=>{ 
+            app.click_here(e);
+            app.virtual_keyboard("Clear");
+        } );
     },
 
     // CONSOLE.LOG DES VARIABLES ===> 
@@ -57,7 +128,6 @@ const app = {
         console.log(typeof(input_current_value));
         console.log("===============");
     },
-
     // ON RECUPERE LA VALEUR DE L'INPUT
     get_value : function(){
         let current_value = document.getElementById("screen").value;
@@ -65,7 +135,20 @@ const app = {
         console.log(current_value);
         return current_value;
     },
-
+    // ON DEFINIE LA ZONE DE CLICK
+    click_here : function(x){
+        // console.log("CLICK HERE est en cours");
+        // console.log(x);
+        // console.log(x.target);
+        // let virtual_key_target = x.target.innerText;
+        // console.log("virtual_key_target ==== > ", virtual_key_target);
+        if(x.target.localName == "h2"){
+            //console.log("t'as cliqué sur le caractère");
+            app.press_effect(x.target.parentNode);
+        } else {
+            app.press_effect(x.target);
+        }
+    },
     // ON APPUIE SUR UNE TOUCHE (VISUAL EFFECT)
     press_effect : function(x){
         x.animate([
@@ -117,8 +200,59 @@ const app = {
         }
     },
     // ECOUTEUR DU CLAVIER VIRTUEL ET SEQUENCES
-    virtual_keyboard : function(){
+    virtual_keyboard : function(x){
         console.log("Virtual Keyboard Listener activated");
+        console.log("Tu as clické sur : ", x);
+        console.log(typeof(x));
+        let key_pressed = x;
+        if("0123456789".indexOf(key_pressed) >= 0 ){
+            console.log("app.screen.value BEFORE ==>  ", app.screen.value);
+            if(app.screen.value){
+                let new_value = app.screen.value + key_pressed;
+                app.screen.value = new_value;
+                console.log("app.screen.value AFTER ==>  ", app.screen.value);
+                return;
+            }
+            app.screen.value = key_pressed;
+            console.log("app.screen.value AFTER ==>  ", app.screen.value);
+            return;
+        }
+        if(key_pressed == "."){
+            console.log("POINT");
+            let tempo_value = app.get_value();
+            console.log("tempo_value ==>  ", tempo_value);
+            if(tempo_value.indexOf(key_pressed) >= 0){
+                console.log("Il y a déja un POINT");
+                return false;
+            }
+            if(!app.screen.value){
+                return false;
+            }
+            let new_value = app.screen.value + key_pressed;
+            app.screen.value = new_value;
+            console.log("app.screen.value AFTER ==>  ", app.screen.value);
+            return;
+        }
+        if("+-*/".indexOf(key_pressed) >= 0){
+            console.log("OPERATEURS");
+            app.manage_operator(key_pressed);
+            return false;
+        }
+        if(key_pressed == "="){
+            console.log("EGAL... Lancer la séquence de calcul et donner le résultat");
+            app.value_second = app.get_value()*1;
+            app.calculate(app.operator);
+            return false;
+        }
+        if(key_pressed == "Clear"){
+            app.screen.value = "";
+            return false;
+        }
+        if(key_pressed == "Back"){
+            let new_value = app.screen.value.substring(0, app.screen.value.length-1);
+            app.screen.value = new_value;
+            return;
+        }
     },
     // ON GERE LA SAISIE D'UN OPERATEUR
     manage_operator : function(x){
