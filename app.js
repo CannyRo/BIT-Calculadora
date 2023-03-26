@@ -131,19 +131,11 @@ const app = {
     // ON RECUPERE LA VALEUR DE L'INPUT
     get_value : function(){
         let current_value = document.getElementById("screen").value;
-        console.log("current_value = ");
-        console.log(current_value);
         return current_value;
     },
     // ON DEFINIE LA ZONE DE CLICK
     click_here : function(x){
-        // console.log("CLICK HERE est en cours");
-        // console.log(x);
-        // console.log(x.target);
-        // let virtual_key_target = x.target.innerText;
-        // console.log("virtual_key_target ==== > ", virtual_key_target);
         if(x.target.localName == "h2"){
-            //console.log("t'as cliqué sur le caractère");
             app.press_effect(x.target.parentNode);
         } else {
             app.press_effect(x.target);
@@ -164,34 +156,25 @@ const app = {
     // ECOUTEUR DU CLAVIER REEL ET SEQUENCES
     real_keyboard : function(){
         console.log("Real Keyboard Listener activated");
-        // Contrôle et restriction des touches
         app.screen.onkeypress = (e) => {
-            //console.log(e);
-            console.log(e.key);
             let key_pressed = e.key;
             
             if("0123456789.+-*/=".indexOf(key_pressed) < 0 ){
                 return false;
             }
             if(key_pressed == "."){
-                console.log("POINT");
-
                 let tempo_value = app.get_value();
-                console.log("tempo_value ==>  ", tempo_value);
                 
                 if(tempo_value.indexOf(key_pressed) >= 0){
-                    console.log("Il y a déja un POINT");
                     return false;
                 }
                 return;
             }
             if("+-*/".indexOf(key_pressed) >= 0){
-                console.log("OPERATEURS");
                 app.manage_operator(key_pressed);
                 return false;
             }
             if(key_pressed == "="){
-                console.log("EGAL... Lancer la séquence de calcul et donner le résultat");
                 app.value_second = app.get_value()*1;
                 app.calculate(app.operator);
                 return false;
@@ -202,27 +185,19 @@ const app = {
     // ECOUTEUR DU CLAVIER VIRTUEL ET SEQUENCES
     virtual_keyboard : function(x){
         console.log("Virtual Keyboard Listener activated");
-        console.log("Tu as clické sur : ", x);
-        console.log(typeof(x));
         let key_pressed = x;
         if("0123456789".indexOf(key_pressed) >= 0 ){
-            console.log("app.screen.value BEFORE ==>  ", app.screen.value);
             if(app.screen.value){
                 let new_value = app.screen.value + key_pressed;
                 app.screen.value = new_value;
-                console.log("app.screen.value AFTER ==>  ", app.screen.value);
                 return;
             }
             app.screen.value = key_pressed;
-            console.log("app.screen.value AFTER ==>  ", app.screen.value);
             return;
         }
         if(key_pressed == "."){
-            console.log("POINT");
             let tempo_value = app.get_value();
-            console.log("tempo_value ==>  ", tempo_value);
             if(tempo_value.indexOf(key_pressed) >= 0){
-                console.log("Il y a déja un POINT");
                 return false;
             }
             if(!app.screen.value){
@@ -230,16 +205,13 @@ const app = {
             }
             let new_value = app.screen.value + key_pressed;
             app.screen.value = new_value;
-            console.log("app.screen.value AFTER ==>  ", app.screen.value);
             return;
         }
         if("+-*/".indexOf(key_pressed) >= 0){
-            console.log("OPERATEURS");
             app.manage_operator(key_pressed);
             return false;
         }
         if(key_pressed == "="){
-            console.log("EGAL... Lancer la séquence de calcul et donner le résultat");
             app.value_second = app.get_value()*1;
             app.calculate(app.operator);
             return false;
@@ -256,42 +228,30 @@ const app = {
     },
     // ON GERE LA SAISIE D'UN OPERATEUR
     manage_operator : function(x){
-        console.log("Manage Operator ON");
+        console.log("Manage Operator");
         if(app.operator !== ""){
-            console.log("On a déjà un opérateur enregistré")
             app.value_second = app.get_value()*1;
             app.calculate(app.operator);
         }
         app.value_first = app.get_value()*1;
-        console.log("app.value_first ==>  ", app.value_first);
-        console.log(typeof(app.value_first));
         switch(x){
             case "+" : 
-                console.log("C'est un +");
                 app.operator = "+";
-                console.log("app.operator == >  ", app.operator);
                 app.screen.value = "";
                 break;
             case "-" : 
-                console.log("C'est un -");
                 app.operator = "-";
-                console.log("app.operator == >  ", app.operator);
                 app.screen.value = "";
                 break;
             case "*" : 
-                console.log("C'est un *");
                 app.operator = "*";
-                console.log("app.operator == >  ", app.operator);
                 app.screen.value = "";
                 break;
             case "/" : 
-                console.log("C'est un /");
                 app.operator = "/";
-                console.log("app.operator == >  ", app.operator);
                 app.screen.value = "";
                 break;
             default : 
-                console.log("NOT AN OPERATOR");
                 break;
         }
     },
@@ -300,31 +260,26 @@ const app = {
         console.log("Calculate");
         switch(x){
             case "+" : 
-                console.log("On additionne : ");
                 app.value_second = app.get_value()*1;
                 app.value_result = app.value_first + app.value_second;
                 app.screen.value = app.value_result;
                 break;
             case "-" : 
-                console.log("On soustrait : ");
                 app.value_second = app.get_value()*1;
                 app.value_result = app.value_first - app.value_second;
                 app.screen.value = app.value_result;
                 break;
             case "*" : 
-                console.log("On multiplie : ");
                 app.value_second = app.get_value()*1;
                 app.value_result = app.value_first * app.value_second;
                 app.screen.value = app.value_result;
                 break;
             case "/" : 
-                console.log("On divise : ");
                 app.value_second = app.get_value()*1;
                 app.value_result = app.value_first / app.value_second;
                 app.screen.value = app.value_result;
                 break;
             default : 
-                console.log("NOT AN OPERATOR");
                 app.value_result = app.get_value()*1;
                 app.screen.value = app.value_result;
                 break;

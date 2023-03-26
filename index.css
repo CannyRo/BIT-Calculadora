@@ -348,7 +348,7 @@ main{
 }
 
 button{
-    display: none;
+    /* display: none; */
     position: fixed;
     left: 3rem;
     top: 3rem;
