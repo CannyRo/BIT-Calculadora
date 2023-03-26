@@ -1,90 +1,355 @@
+@font-face {
+    font-family: "Digi";
+    src: url("./DS-DIGII.TTF");
+}
 *{
     box-sizing: border-box;
 }
 body{
-    background-color: azure;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 100vh;
+    font-size: 1rem;
     perspective: 300rem;
+    background-color: aliceblue;
+    color: aliceblue;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
+/*REMOVE ARROWS IN NUMBER'S INPUT from https://www.w3schools.com/*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/* END OF REMOVE ARROWS IN NUMBER'S INPUT from https://www.w3schools.com/*/
 main{
-    background-color: bisque;
-    width: 10rem;
-    height: 10rem;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-main div{
-    font-size: 2rem;
-    width: 50%;
-    height: 50%;
+.screenbox{
+    box-sizing: content-box;
+    position: relative;
+    width: 19rem;
+    height: 6rem;
+    background-color: #00131c;
+    border: 0.0125rem solid #00131c;
+    border-radius: 0.25rem;
+    transform:
+        rotateX(60deg)
+        rotateZ(45deg)
+        rotateX(-90deg)
+        translateX(19rem)
+        translateZ(6rem);
+    transform-style: preserve-3d;
+}
+.screenbox input{
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+    width:18.25rem;
+    height: 4.5rem;
+    font-family: "Digi", Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: end;
+}
+#screenbox_side{
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 7rem;
+    background-color:#1F4E66;
+    transform: 
+        translateX(18.5rem)
+        rotateY(90deg)
+        translateX(0.5rem);
+    border: 0.0125rem solid #1F4E66;
+    border-radius: 0.125rem;
+}
+#screenbox_roof{
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 19rem;
+    height: 1rem;
+    background-color: #0077B3;
+    transform: 
+        translateY(-0.5rem)
+        rotateX(90deg)
+        translateY(-0.5rem);
+    border-radius: 0.125rem;
+    border: 0.0125rem solid #1F4E66;
+}
+.keyboard{
+    width: 19rem;
+    height: 26rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-areas: 
+        "divide multiply clear back"
+        "seven eight nine less"
+        "four five six more"
+        "one two three equal"
+        "zero zero dot equal";
+    border: 0.0125rem solid #0077B3;
+    border-radius: 0.125rem;
+    transform: rotateX(60deg)rotateZ(45deg);
+    transform-style: preserve-3d;
+    background-color: #0077B3;
+    box-shadow: 
+        0.025rem 0rem 0.025rem #1F4E66,
+        0.025rem 0.05rem 0.025rem #00131c,
+        0.05rem 0.025rem 0.025rem #1F4E66,
+        0.05rem 0.1rem 0.025rem #00131c,
+        0.1rem 0.05rem 0.025rem #1F4E66,
+        0.1rem 0.15rem 0.025rem #00131c,
+        0.15rem 0.1rem 0.025rem #1F4E66,
+        0.15rem 0.2rem 0.025rem #00131c,
+        0.2rem 0.15rem 0.025rem #1F4E66, 
+        0.2rem 0.25rem 0.025rem #00131c, 
+        0.25rem 0.2rem 0.025rem #1F4E66, 
+        0.25rem 0.3rem 0.025rem #00131c,
+        0.3rem 0.25rem 0.025rem #1F4E66,
+        0.3rem 0.35rem 0.025rem #00131c,
+        0.35rem 0.3rem 0.025rem #1F4E66,
+        0.35rem 0.4rem 0.025rem #00131c,
+        0.4rem 0.35rem 0.025rem #1F4E66,
+        0.4rem 0.45rem 0.025rem #00131c,
+        0.45rem 0.4rem 0.025rem #1F4E66,
+        0.45rem 0.5rem 0.025rem #00131c,
+        0.5rem 0.45rem 0.025rem #1F4E66, 
+        0.5rem 0.55rem 0.025rem #00131c, 
+        0.55rem 0.5rem 0.025rem #1F4E66, 
+        0.55rem 0.6rem 0.025rem #00131c,
+        0.6rem 0.55rem 0.025rem #1F4E66,
+        0.6rem 0.65rem 0.025rem #00131c,
+        0.65rem 0.6rem 0.025rem #1F4E66,
+        0.65rem 0.7rem 0.025rem #00131c,
+        0.7rem 0.65rem 0.025rem #1F4E66,
+        0.7rem 0.75rem 0.025rem #00131c,
+        0.75rem 0.7rem 0.025rem #1F4E66,
+        0.75rem 0.8rem 0.025rem #00131c,
+        0.8rem 0.75rem 0.025rem #1F4E66, 
+        0.8rem 0.85rem 0.025rem #00131c, 
+        0.85rem 0.8rem 0.025rem #1F4E66, 
+        0.85rem 0.9rem 0.025rem #00131c,
+        0.9rem 0.85rem 0.025rem #1F4E66,
+        0.9rem 0.95rem 0.025rem #00131c,
+        0.95rem 0.9rem 0.025rem #1F4E66,
+        0.95rem 1rem 0.025rem #00131c,
+        1rem 0.95rem 0.025rem #1F4E66,
+        1rem 1.05rem 0.025rem #00131c,
+        1.05rem 1rem 0.025rem #1F4E66,
+        1.05rem 1.1rem 0.025rem #00131c,
+        1.1rem 1.05rem 0.025rem #1F4E66, 
+        1.1rem 1.15rem 0.025rem #00131c, 
+        1.15rem 1.1rem 0.025rem #1F4E66, 
+        1.15rem 1.2rem 0.025rem #00131c;
+}
+.calculator_key{
+    z-index: 1;
+    width: 3.5rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: deeppink;
+    background-color: #032333;
+
     border-radius: 0.5rem;
-    transform: rotateX(60deg)rotateZ(45deg);
+    transform: translateZ(0.5rem);
+    /**/
+    /**/
     transform-style: preserve-3d;
     perspective: 300rem;
     text-shadow: 
-        0.025rem 0rem 0 dimgrey,
-        0.025rem 0.05rem 0 black,
-        0.05rem 0.025rem 0 dimgrey,
-        0.05rem 0.1rem 0 black,
-        0.1rem 0.05rem 0 dimgrey,
-        0.1rem 0.15rem 0 black,
-        0.15rem 0.1rem 0 dimgrey,
-        0.15rem 0.2rem 0 black,
-        0.2rem 0.15rem 0 dimgrey, 
-        0.2rem 0.25rem 0 black, 
-        0.25rem 0.2rem 0 dimgrey, 
-        0.25rem 0.3rem 0 black,
-        0.3rem 0.25rem 0 dimgrey,
-        0.3rem 0.35rem 0 black,
-        0.35rem 0.3rem 0 dimgrey,
-        0.35rem 0.4rem 0 black,
-        0.4rem 0.35rem 0 dimgrey,
-        0.4rem 0.45rem 0 black,
-        0.45rem 0.4rem 0 dimgrey,
-        0.45rem 0.5rem 0 black,
-        0.5rem 0.45rem 0 dimgrey, 
-        0.5rem 0.55rem 0 black, 
-        0.55rem 0.5rem 0 dimgrey, 
-        0.55rem 0.6rem 0 black;
+        0.025rem 0rem 0.025rem #1F4E66,
+        0.025rem 0.05rem 0.025rem #00131c,
+        0.05rem 0.025rem 0.025rem #1F4E66,
+        0.05rem 0.1rem 0.025rem #00131c,
+        0.1rem 0.05rem 0.025rem #1F4E66,
+        0.1rem 0.15rem 0.025rem #00131c,
+        0.15rem 0.1rem 0.025rem #1F4E66,
+        0.15rem 0.2rem 0.025rem #00131c,
+        0.2rem 0.15rem 0.025rem #1F4E66, 
+        0.2rem 0.25rem 0.025rem #00131c, 
+        0.25rem 0.2rem 0.025rem #1F4E66, 
+        0.25rem 0.3rem 0.025rem #00131c;
     box-shadow: 
-    0.025rem 0rem 0 dimgrey,
-    0.025rem 0.05rem 0 black,
-    0.05rem 0.025rem 0 dimgrey,
-    0.05rem 0.1rem 0 black,
-    0.1rem 0.05rem 0 dimgrey,
-    0.1rem 0.15rem 0 black,
-    0.15rem 0.1rem 0 dimgrey,
-    0.15rem 0.2rem 0 black,
-    0.2rem 0.15rem 0 dimgrey, 
-    0.2rem 0.25rem 0 black, 
-    0.25rem 0.2rem 0 dimgrey, 
-    0.25rem 0.3rem 0 black,
-    0.3rem 0.25rem 0 dimgrey,
-    0.3rem 0.35rem 0 black,
-    0.35rem 0.3rem 0 dimgrey,
-    0.35rem 0.4rem 0 black,
-    0.4rem 0.35rem 0 dimgrey,
-    0.4rem 0.45rem 0 black,
-    0.45rem 0.4rem 0 dimgrey,
-    0.45rem 0.5rem 0 black,
-    0.5rem 0.45rem 0 dimgrey, 
-    0.5rem 0.55rem 0 black, 
-    0.55rem 0.5rem 0 dimgrey, 
-    0.55rem 0.6rem 0 black;
-        transition: 0.5 ease-in-out;
+    0.025rem 0rem 0.025rem #1F4E66,
+    0.025rem 0.05rem 0.025rem #00131c,
+    0.05rem 0.025rem 0.025rem #1F4E66,
+    0.05rem 0.1rem 0.025rem #00131c,
+    0.1rem 0.05rem 0.025rem #1F4E66,
+    0.1rem 0.15rem 0.025rem #00131c,
+    0.15rem 0.1rem 0.025rem #1F4E66,
+    0.15rem 0.2rem 0.025rem #00131c,
+    0.2rem 0.15rem 0.025rem #1F4E66, 
+    0.2rem 0.25rem 0.025rem #00131c, 
+    0.25rem 0.2rem 0.025rem #1F4E66, 
+    0.25rem 0.3rem 0.025rem #00131c,
+    0.3rem 0.25rem 0.025rem #1F4E66,
+    0.3rem 0.35rem 0.025rem #00131c,
+    0.35rem 0.3rem 0.025rem #1F4E66,
+    0.35rem 0.4rem 0.025rem #00131c,
+    0.4rem 0.35rem 0.025rem #1F4E66,
+    0.4rem 0.45rem 0.025rem #00131c,
+    0.45rem 0.4rem 0.025rem #1F4E66,
+    0.45rem 0.5rem 0.025rem #00131c,
+    0.5rem 0.45rem 0.025rem #1F4E66, 
+    0.5rem 0.55rem 0.025rem #00131c, 
+    0.55rem 0.5rem 0.025rem #1F4E66, 
+    0.55rem 0.6rem 0.025rem #00131c,
+    0.6rem 0.55rem 0.025rem #1F4E66,
+    0.6rem 0.65rem 0.025rem #00131c,
+    0.65rem 0.6rem 0.025rem #1F4E66,
+    0.65rem 0.7rem 0.025rem #00131c,
+    0.7rem 0.65rem 0.025rem #1F4E66,
+    0.7rem 0.75rem 0.025rem #00131c,
+    0.75rem 0.7rem 0.025rem #1F4E66,
+    0.75rem 0.8rem 0.025rem #00131c,
+    0.8rem 0.75rem 0.025rem #1F4E66, 
+    0.8rem 0.85rem 0.025rem #00131c, 
+    0.85rem 0.8rem 0.025rem #1F4E66, 
+    0.85rem 0.9rem 0.025rem #00131c,
+    0.9rem 0.85rem 0.025rem #1F4E66,
+    0.9rem 0.95rem 0.025rem #00131c,
+    0.95rem 0.9rem 0.025rem #1F4E66,
+    0.95rem 1rem 0.025rem #00131c,
+    1rem 0.95rem 0.025rem #1F4E66,
+    1rem 1.05rem 0.025rem #00131c,
+    1.05rem 1rem 0.025rem #1F4E66,
+    1.05rem 1.1rem 0.025rem #00131c,
+    1.1rem 1.05rem 0.025rem #1F4E66, 
+    1.1rem 1.15rem 0.025rem #00131c, 
+    1.15rem 1.1rem 0.025rem #1F4E66, 
+    1.15rem 1.2rem 0.025rem #00131c;
+    transition: 0.1s ease-in-out;
 }
 
-main div:hover{
-    transform: rotateX(60deg)rotateZ(45deg)translateZ(-0.25rem);
+#zero{
+    grid-area: zero;
+    width: 8.25rem;
+}
+#one{
+    grid-area: one;
+}
+#two{
+    grid-area: two;
+}
+#three{
+    grid-area: three;
+}
+#four{
+    grid-area: four;
+}
+#five{
+    grid-area: five;
+}
+#six{
+    grid-area: six;
+}
+#seven{
+    grid-area: seven;
+}
+#eight{
+    grid-area: eight;
+}
+#nine{
+    grid-area: nine;
+}
+#dot{
+    grid-area: dot;
+}
+#more{
+    grid-area: more;
+}
+#less{
+    grid-area: less;
+}
+#multiply{
+    grid-area: multiply;
+}
+#divide{
+    grid-area: divide;
+}
+#equal{
+    grid-area: equal;
+    height: 8.5rem;
+}
+#back{
+    grid-area: back;
+    font-size: 0.5rem;
+}
+#clear{
+    grid-area: clear;
+    font-size: 0.5rem;
+}
+/*
+.calculator_key:hover{
+    
+    transform: translateZ(0.125rem);
     transform-style: preserve-3d;
+}
+*/
+.presseffect{
+    /* transform: translateZ(0.125rem); */
+    /* transform: translateZ(0.5rem); */
+    animation-name: press;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.unpresseffect{
+    animation-name: unpress;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.updown{
+    animation-name: updown;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    transform-style: preserve-3d;
+}
+
+@keyframes updown{
+    0% {transform: translateZ(0.5rem);}
+    50% {transform: translateZ(0.125rem);}
+    100% {transform: translateZ(0.5rem);}
+}
+
+@keyframes press {
+    0% {transform: translateZ(0.5rem);}
+    100% {transform: translateZ(0.125rem);}
+}
+
+@keyframes unpress {
+    0% {transform: translateZ(0.125rem);}
+    100% {transform: translateZ(0.5rem);}
+}
+
+button{
+    /* display: none; */
+    position: fixed;
+    left: 3rem;
+    top: 3rem;
 }
